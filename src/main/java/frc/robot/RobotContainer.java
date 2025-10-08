@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.Driver;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.ElevatorSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -28,11 +29,13 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here
   private final Field2d fieldMap = new Field2d();
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+  public final ElevatorSubsystem elevator = new ElevatorSubsystem();
 
   private final Telemetry telemetry = new Telemetry(Driver.MAX_SPEED);
 
   private final CommandXboxController driverController =
       new CommandXboxController(Driver.CONTROLLER_PORT);
+  private final CommandXboxController operatorController = driverController;
 
   /** The container for the robot. Contains subsystems, IO devices, and commands. */
   public RobotContainer() {
@@ -85,6 +88,8 @@ public class RobotContainer {
     }
 
     { // Operator controls
+      operatorController.a().onTrue(elevator.runOnce(() -> elevator.moveUp()));
+      operatorController.b().onTrue(elevator.runOnce(() -> elevator.moveDown()));
     }
   }
 

@@ -39,6 +39,12 @@ public final class Constants {
     public static final int MOTOR_ID = 18;
     public static final double CURRENT_LIMIT = 80.0;
 
+    public enum height {
+      BOTTOM,
+      MIDDLE,
+      TOP
+    }
+
     public static final TalonFXConfiguration elevatorConfigs = new TalonFXConfiguration();
 
     static {
