@@ -37,10 +37,10 @@ public class ElevatorSubsystem implements Subsystem {
   public void moveUp() {
     switch (curLevel) {
       case BOTTOM:
-        setHeightLevel(curLevel);
+        setHeightLevel(Constants.Elevator.height.MIDDLE);
         break;
       case MIDDLE:
-        setHeightLevel(curLevel);
+        setHeightLevel(Constants.Elevator.height.TOP);
         break;
       case TOP:
         break;
@@ -52,12 +52,10 @@ public class ElevatorSubsystem implements Subsystem {
       case BOTTOM:
         break;
       case MIDDLE:
-        curLevel = Constants.Elevator.height.BOTTOM;
-        setHeightLevel(curLevel);
+        setHeightLevel(Constants.Elevator.height.BOTTOM);
         break;
       case TOP:
-        curLevel = Constants.Elevator.height.MIDDLE;
-        setHeightLevel(curLevel);
+        setHeightLevel(Constants.Elevator.height.MIDDLE);
         break;
     }
   }
